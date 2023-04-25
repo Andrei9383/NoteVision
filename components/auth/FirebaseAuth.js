@@ -13,6 +13,8 @@ import { mapUserData } from "../../lib/firebase/mapUserData";
 import { signInWithPopup } from "firebase/auth";
 import { Router, useRouter } from "next/router";
 
+import SvgComponent from "../icons/GithubLogo.js";
+
 initFirebase(); // initialize firebase
 
 const auth = getAuth();
@@ -68,58 +70,36 @@ const FirebaseAuth = () => {
         console.log(error);
       });
   };
+
   return (
     <>
       <div>
         {renderAuth ? (
           <>
-            <div class="grid grid-flow-row-dense grid-cols-3 grid-rows-3 ...">
-              <div class="col-span-2">01</div>
-              <div class="col-span-2">02</div>
-              <div>03</div>
-              <div>04</div>
-              <div>05</div>
-            </div>
-            // center the div
-            <div class="grid grid-flow-row-dense place-items-center">
-              <button
-                class="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
-                onClick={() => handleLogin()}
-              >
-                <img
-                  class="w-6 h-6"
-                  src="https://www.svgrepo.com/show/475656/google-color.svg"
-                  loading="lazy"
-                  alt="google logo"
-                />
-                <span>Login with Google</span>
-              </button>
-            </div>
-            <div class="grid  grid-flow-row-dense gap-2 place-items-center">
-              <button
-                class="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
-                onClick={() => handleLogin()}
-              >
-                <img
-                  class="w-6 h-6"
-                  src="https://www.svgrepo.com/show/475656/google-color.svg"
-                  loading="lazy"
-                  alt="google logo"
-                />
-                <span>Login with Google</span>
-              </button>
-              <button
-                class="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
-                onClick={() => handleLogin()}
-              >
-                <img
-                  class="w-6 h-6"
-                  src="https://www.svgrepo.com/show/475656/google-color.svg"
-                  loading="lazy"
-                  alt="google logo"
-                />
-                <span>Login with Google</span>
-              </button>
+            <div class="flex h-screen  grid-flow-row-dense gap-2 place-items-center">
+              <div class="m-auto">
+                <button
+                  class="px-4 py-2 border flex gap-2 m-5  border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+                  onClick={() => handleLogin()}
+                >
+                  <img
+                    class="w-6 h-6"
+                    src="https://www.svgrepo.com/show/475656/google-color.svg"
+                    loading="lazy"
+                    alt="google logo"
+                  />
+                  <span>Login with Google</span>
+                </button>
+                <button
+                  class="px-4 py-2 border flex gap-2 m-5 border-slate-200 rounded-lg text-slate-200 hover:border-slate-400 hover:text-slate-0 hover:shadow transition duration-150 bg-black"
+                  onClick={() => handleLogin()}
+                >
+                  <div class="w-6 h-6">
+                    <SvgComponent />
+                  </div>
+                  <span>Login with GitHub</span>
+                </button>
+              </div>
             </div>
           </>
         ) : null}
