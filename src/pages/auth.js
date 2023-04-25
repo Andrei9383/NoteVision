@@ -6,7 +6,7 @@ const Auth = () => {
       <div>
         <FirebaseAuth />
         <p>
-          <Link href="/">Go Home</a>
+          <Link href="/">Go Home</Link>
         </p>
       </div>
     </div>
