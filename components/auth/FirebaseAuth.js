@@ -57,7 +57,7 @@ const FirebaseAuth = () => {
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
-  const microsoftProvider = new OAuthProvider('microsoft.com');
+  const microsoftProvider = new OAuthProvider("microsoft.com");
   const auth = getAuth();
   const router = useRouter();
 
@@ -103,17 +103,15 @@ const FirebaseAuth = () => {
       });
   };
 
-
-
   return (
     <>
       <div>
         {renderAuth ? (
           <>
             <div class="flex h-screen  grid-flow-row-dense gap-2 place-items-center">
-              <div class="m-auto">
+              <div class="m-auto inline-block text-center">
                 <button
-                  class="px-4 py-2 border flex gap-2 m-5  border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+                  class="px-4 py-2 border w-full place-content-center flex gap-2 m-5 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
                   onClick={() => handleLoginGoogle()}
                 >
                   <img
@@ -125,7 +123,7 @@ const FirebaseAuth = () => {
                   <span>Login with Google</span>
                 </button>
                 <button
-                  class="px-4 py-2 border flex gap-2 m-5 border-slate-200 rounded-lg text-slate-200 hover:border-slate-400 hover:text-slate-0 hover:shadow transition duration-150 bg-black"
+                  class="px-4 py-2 border w-full place-content-center flex gap-2 m-5 border-slate-200 rounded-lg text-slate-200 hover:border-slate-400 hover:text-slate-0 hover:shadow transition duration-150 bg-black"
                   onClick={() => handleLoginGithub()}
                 >
                   <div class="w-6 h-6">
@@ -134,14 +132,14 @@ const FirebaseAuth = () => {
                   <span>Login with GitHub</span>
                 </button>
                 <button
-                  class="px-4 py-2 border flex gap-2 m-5 border-slate-200 rounded-lg text-slate-200 hover:border-slate-400 hover:text-slate-0 hover:shadow transition duration-150"
+                  class="px-4 py-2 border w-full place-content-center flex gap-2 m-5 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-0 hover:shadow transition duration-150"
                   onClick={() => handleLoginMicrosoft()}
-                  >
-                    <div class="w-6 h-6">
-                      <SvgMicrosoft />
-                    </div>
-                    <span>Login with Microsoft</span>
-                  </button>
+                >
+                  <div class="w-6 h-6">
+                    <SvgMicrosoft />
+                  </div>
+                  <span>Login with Microsoft</span>
+                </button>
               </div>
             </div>
           </>
