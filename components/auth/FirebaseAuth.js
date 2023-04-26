@@ -7,13 +7,15 @@ import {
   TwitterAuthProvider,
   GithubAuthProvider,
   EmailAuthProvider,
+  OAuthProvider,
 } from "firebase/auth";
 import { setUserCookie } from "../../lib/firebase/userCookies";
 import { mapUserData } from "../../lib/firebase/mapUserData";
 import { signInWithPopup } from "firebase/auth";
 import { Router, useRouter } from "next/router";
 
-import SvgComponent from "../icons/GithubLogo.js";
+import SvgGithub from "../icons/GithubLogo.js";
+import SvgMicrosoft from "../icons/MicrosoftLogo.js";
 
 initFirebase(); // initialize firebase
 
@@ -53,12 +55,14 @@ const FirebaseAuth = () => {
     }
   }, []);
 
-  const provider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const microsoftProvider = new OAuthProvider('microsoft.com');
   const auth = getAuth();
   const router = useRouter();
 
-  const handleLogin = () => {
-    signInWithPopup(auth, provider)
+  const handleLoginGoogle = () => {
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
         const userData = mapUserData(user);
@@ -71,6 +75,36 @@ const FirebaseAuth = () => {
       });
   };
 
+  const handleLoginGithub = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        const user = result.user;
+        const userData = mapUserData(user);
+        setUserCookie(userData);
+        console.log(userData);
+        router.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleLoginMicrosoft = () => {
+    signInWithPopup(auth, microsoftProvider)
+      .then((result) => {
+        const user = result.user;
+        const userData = mapUserData(user);
+        setUserCookie(userData);
+        console.log(userData);
+        router.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+
   return (
     <>
       <div>
@@ -80,7 +114,7 @@ const FirebaseAuth = () => {
               <div class="m-auto">
                 <button
                   class="px-4 py-2 border flex gap-2 m-5  border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
-                  onClick={() => handleLogin()}
+                  onClick={() => handleLoginGoogle()}
                 >
                   <img
                     class="w-6 h-6"
@@ -92,13 +126,22 @@ const FirebaseAuth = () => {
                 </button>
                 <button
                   class="px-4 py-2 border flex gap-2 m-5 border-slate-200 rounded-lg text-slate-200 hover:border-slate-400 hover:text-slate-0 hover:shadow transition duration-150 bg-black"
-                  onClick={() => handleLogin()}
+                  onClick={() => handleLoginGithub()}
                 >
                   <div class="w-6 h-6">
-                    <SvgComponent />
+                    <SvgGithub />
                   </div>
                   <span>Login with GitHub</span>
                 </button>
+                <button
+                  class="px-4 py-2 border flex gap-2 m-5 border-slate-200 rounded-lg text-slate-200 hover:border-slate-400 hover:text-slate-0 hover:shadow transition duration-150"
+                  onClick={() => handleLoginMicrosoft()}
+                  >
+                    <div class="w-6 h-6">
+                      <SvgMicrosoft />
+                    </div>
+                    <span>Login with Microsoft</span>
+                  </button>
               </div>
             </div>
           </>
