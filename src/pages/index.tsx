@@ -10,6 +10,7 @@ import Counter from "@/components/realtimeDatabase/Counter";
 import UploadFile from "@/components/storage/UploadFile";
 import Features from "../../components/feature/feature";
 import Link from "next/link";
+import Dropdown from "@/components/dropdown/Dropdown";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -62,6 +63,7 @@ export default function Example() {
               ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <Dropdown />
               <Link
                 href="/auth"
                 className="text-sm font-semibold leading-6 text-gray-900"
