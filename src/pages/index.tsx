@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -13,6 +12,8 @@ import Link from "next/link";
 import Dropdown from "@/components/dropdown/Dropdown";
 import { useRouter } from "next/router";
 
+import IUser from "@/interfaces/user";
+
 const navigation = [
   { name: "Product", href: "#" },
   { name: "Features", href: "#" },
@@ -22,7 +23,10 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user, logout } = useUser();
+  const { user, logout } = useUser() as unknown as {
+    user: IUser;
+    logout: Function;
+  };
   const router = useRouter();
 
   if (user) {

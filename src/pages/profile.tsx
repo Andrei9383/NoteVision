@@ -1,11 +1,16 @@
 import { useUser } from "@/lib/firebase/useUser";
 import Select from "@/components/select/select";
+import IUser from "@/interfaces/user";
 
 export default function Profile() {
-  const { user, logout } = useUser();
+  const { user, logout } = useUser() as unknown as {
+    user: IUser;
+    logout: Function;
+  };
   if (!user) return <div>loading...</div>;
   return (
     <>
+      {console.log(user)}
       <div className="flex flex-row h-full">
         <div className="h-screen grid grid-rows-3 place-items-center border-gray-400 border-r drop-shadow-md shadow-gray shadow-2xl">
           <div className="p-10">
