@@ -1,6 +1,8 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
+
 import { Space_Grotesk } from "@next/font/google";
+
+import type { AppProps } from "next/app";
 
 const sans = Space_Grotesk({
   subsets: ["latin"],
