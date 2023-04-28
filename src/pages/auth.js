@@ -5,9 +5,6 @@ const Auth = () => {
     <div>
       <div>
         <FirebaseAuth />
-        <p>
-          <Link href="/">Go Home</Link>
-        </p>
       </div>
     </div>
   );
