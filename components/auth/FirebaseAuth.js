@@ -79,7 +79,11 @@ const FirebaseAuth = () => {
   const handleLoginGithub = () => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
+        const credential = GithubAuthProvider.credentialFromResult(result);
+
+        // The signed-in user info.
         const user = result.user;
+        console.log(user);
         const userData = mapUserData(user);
         setUserCookie(userData);
         console.log(userData);
