@@ -1,31 +1,32 @@
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
-  ServerIcon,
-} from "@heroicons/react/20/solid";
+  ServerIcon
+} from '@heroicons/react/20/solid'
+import React from 'react'
 
 const features = [
   {
-    name: "Push to deploy.",
+    name: 'Push to deploy.',
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: CloudArrowUpIcon,
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    icon: CloudArrowUpIcon
   },
   {
-    name: "SSL certificates.",
+    name: 'SSL certificates.',
     description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-    icon: LockClosedIcon,
+      'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+    icon: LockClosedIcon
   },
   {
-    name: "Database backups.",
+    name: 'Database backups.',
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
-    icon: ServerIcon,
-  },
-];
+      'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
+    icon: ServerIcon
+  }
+]
 
-export default function Features() {
+export default function Features () {
   return (
     <div className="overflow-hidden py-24 sm:py-32 bg-[#fdf6e3]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -52,7 +53,7 @@ export default function Features() {
                         aria-hidden="true"
                       />
                       {feature.name}
-                    </dt>{" "}
+                    </dt>{' '}
                     <dd className="inline">{feature.description}</dd>
                   </div>
                 ))}
@@ -69,5 +70,5 @@ export default function Features() {
         </div>
       </div>
     </div>
-  );
+  )
 }

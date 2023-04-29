@@ -1,14 +1,13 @@
-import Demo from "@/components/tiptap/tiptap";
-import { useUser } from "@/lib/firebase/useUser";
+import Demo from '@/components/tiptap/tiptap'
+import React from 'react'
 
-const Testing = () => {
-  const { user, logout } = useUser();
+const Testing = (): JSX.Element => {
   return (
     <div>
       <Demo />
       testing
     </div>
-  );
-};
+  )
+}
 
-export default Testing;
+export default Testing

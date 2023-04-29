@@ -1,5 +1,3 @@
-const parser = require('@typescript-eslint/parser');
-
 module.exports = {
   env: {
     browser: true,
@@ -15,16 +13,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    programs: [parser.createProgram('tsconfig.json')],
-
+    project: './tsconfig.json'
   },
   plugins: [
-    'react',
-    '@typescript-eslint',
-    'typescript'
+    'react'
   ],
-  
   rules: {
   }
 }
-  
