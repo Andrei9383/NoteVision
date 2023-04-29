@@ -1,33 +1,37 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from 'react'
 
-import Header from "@/components/header/header";
-import IUser from "@/interfaces/user";
-import { useUser } from "@/lib/firebase/useUser";
-import { Menu, Transition } from "@headlessui/react";
+import Header from '@/components/header/header'
+import type IUser from '@/interfaces/user'
+import { useUser } from '@/lib/firebase/useUser'
+import { Menu, Transition } from '@headlessui/react'
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+function classNames (...classes: string[]): string {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default function Profile() {
-  const { user, logout } = useUser() as unknown as {
-    user: IUser;
-    logout: Function;
-  };
-  const [newNotebookName, setNewNotebookname] = useState("");
+export default function Profile (): JSX.Element {
+  const { user } = useUser() as unknown as {
+    user: IUser
+    logout: () => void
+  }
+  const [newNotebookName, setNewNotebookname] = useState('')
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
   const createNotebook = async () => {
-    const res = await fetch("/api/notebooks", {
-      method: "POST",
-      body: JSON.stringify({ name: newNotebookName }),
-    });
-    const data = await res.json();
-    console.log(data);
-  };
+    const res = await fetch('/api/notebooks', {
+      method: 'POST',
+      body: JSON.stringify({ name: newNotebookName })
+    })
+    const data = await res.json()
+    console.log(data)
+  }
 
-  if (!user) return <div>loading...</div>;
-  function setMobileMenuOpen(arg0: boolean): void {
-    throw new Error("Function not implemented.");
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  if (!user) return <div>loading...</div>
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function setMobileMenuOpen (arg0: boolean): void {
+    throw new Error('Function not implemented.')
   }
 
   return (
@@ -81,10 +85,10 @@ export default function Profile() {
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className="font-bold py-2 px-4 w-20 h-10 mt-6 ml-20 inline-flex  items-center justify-center gap-x-1.5 rounded-md bg-[#ffffff50]    text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                  {/*<ChevronDownIcon
+                  {/* <ChevronDownIcon
             className="-mr-1 h-5 w-5 text-gray-400"
             aria-hidden="true"
-        />*/}{" "}
+        /> */}{' '}
                   New
                 </Menu.Button>
               </div>
@@ -104,7 +108,7 @@ export default function Profile() {
                       type="text"
                       className="form-input outline-none border-none w-full px-4 py-2 text-sm rounded-md placeholder-gray-500 focus:ring-0 focus:border-transparent"
                       onChange={(e) => {
-                        setNewNotebookname(e.target.value);
+                        setNewNotebookname(e.target.value)
                       }}
                       value={newNotebookName}
                     ></input>
@@ -117,12 +121,12 @@ export default function Profile() {
                           href="#"
                           className={classNames(
                             active
-                              ? "bg-green-100 text-gray-900 "
-                              : "text-green-700 ",
-                            "block px-4 py-2 text-sm h-full w-full"
+                              ? 'bg-green-100 text-gray-900 '
+                              : 'text-green-700 ',
+                            'block px-4 py-2 text-sm h-full w-full'
                           )}
                           onClick={() => {
-                            console.log("clicked");
+                            console.log('clicked')
                           }}
                         >
                           Create
@@ -138,5 +142,5 @@ export default function Profile() {
         <div>03</div>
       </div>
     </>
-  );
+  )
 }
