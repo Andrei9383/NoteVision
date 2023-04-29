@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 const SvgMicrosoft = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -12,4 +12,4 @@ const SvgMicrosoft = (props) => (
     <path fill="#F25325" d="M5 5h10v10H5z" />
   </svg>
 )
-export default SvgMicrosoft;
+export default SvgMicrosoft

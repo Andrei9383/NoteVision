@@ -1,4 +1,5 @@
-export default function Select() {
+import React from 'react'
+export default function Select (): JSX.Element {
   return (
     <div>
       <label
@@ -34,5 +35,5 @@ export default function Select() {
         </div>
       </div>
     </div>
-  );
+  )
 }

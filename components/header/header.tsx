@@ -1,25 +1,25 @@
-import Link from "next/link";
-import { useState } from "react";
+import Link from 'next/link'
+import React, { useState } from 'react'
 
-import Dropdown from "@/components/dropdown/Dropdown";
-import IUser from "@/interfaces/user";
-import { useUser } from "@/lib/firebase/useUser";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Dropdown from '@/components/dropdown/Dropdown'
+import type IUser from '@/interfaces/user'
+import { useUser } from '@/lib/firebase/useUser'
+import { Dialog } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
+  { name: 'Product', href: '#' },
+  { name: 'Features', href: '#' },
+  { name: 'Marketplace', href: '#' },
+  { name: 'Company', href: '#' }
+]
 
-function Header(props: any) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+function Header (props: any): JSX.Element {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { user, logout } = useUser() as unknown as {
-    user: IUser;
-    logout: Function;
-  };
+    user: IUser
+    logout: () => void
+  }
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -41,7 +41,7 @@ function Header(props: any) {
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={() => { setMobileMenuOpen(true) }}
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -82,7 +82,7 @@ function Header(props: any) {
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => { setMobileMenuOpen(false) }}
             >
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -114,7 +114,7 @@ function Header(props: any) {
         </Dialog.Panel>
       </Dialog>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header

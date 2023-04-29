@@ -1,14 +1,14 @@
-import { Fragment } from "react";
+import React, { Fragment } from 'react'
 
-import { Menu, Transition } from "@headlessui/react";
+import { Menu, Transition } from '@headlessui/react'
 
-import Image from "next/image";
+import Image from 'next/image'
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+function classNames (...classes: string[]): string {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default function Dropdown(props: any) {
+export default function Dropdown (props: any): JSX.Element {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -21,10 +21,10 @@ export default function Dropdown(props: any) {
             alt="profile pic"
           />
           {props.user?.name}
-          {/*<ChevronDownIcon
+          {/* <ChevronDownIcon
             className="-mr-1 h-5 w-5 text-gray-400"
             aria-hidden="true"
-        />*/}
+        /> */}
         </Menu.Button>
       </div>
 
@@ -44,8 +44,8 @@ export default function Dropdown(props: any) {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Edit
@@ -57,8 +57,8 @@ export default function Dropdown(props: any) {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Duplicate
@@ -72,8 +72,8 @@ export default function Dropdown(props: any) {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Archive
@@ -85,8 +85,8 @@ export default function Dropdown(props: any) {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Move
@@ -100,8 +100,8 @@ export default function Dropdown(props: any) {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Share
@@ -113,8 +113,8 @@ export default function Dropdown(props: any) {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                 >
                   Add to favorites
@@ -128,8 +128,8 @@ export default function Dropdown(props: any) {
                 <a
                   href="#"
                   className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
                   )}
                   onClick={() => props.logout()}
                 >
@@ -141,5 +141,5 @@ export default function Dropdown(props: any) {
         </Menu.Items>
       </Transition>
     </Menu>
-  );
+  )
 }
