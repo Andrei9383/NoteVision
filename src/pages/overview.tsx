@@ -1,36 +1,54 @@
-import React, { Fragment, useState } from 'react'
+/* eslint-disable react/jsx-key */
+import React, { Fragment, useState, useEffect } from 'react'
 
 import Header from '@/components/header/header'
 import type IUser from '@/interfaces/user'
 import { useUser } from '@/lib/firebase/useUser'
 import { Menu, Transition } from '@headlessui/react'
+import CreateNotebook from '@/components/cloudFirestore/CreateNotebook'
+import ReadNotebooks from '@/components/cloudFirestore/ReadNotebooks'
+import { useRouter } from 'next/router'
+import { PencilIcon, TrashIcon, PencilSquareIcon } from '@heroicons/react/24/outline'
 
-function classNames (...classes: string[]): string {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Profile (): JSX.Element {
+export default function Profile(): JSX.Element {
   const { user } = useUser() as unknown as {
     user: IUser
     logout: () => void
   }
   const [newNotebookName, setNewNotebookname] = useState('')
+  const [notebooks, setNotebooks] = useState([])
+  const router = useRouter()
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-function-return-type
-  const createNotebook = async () => {
-    const res = await fetch('/api/notebooks', {
-      method: 'POST',
-      body: JSON.stringify({ name: newNotebookName })
+  useEffect(() => {
+    if (!user) return
+    void ReadNotebooks(user).then((notebooks) => {
+      setNotebooks(notebooks)
     })
-    const data = await res.json()
-    console.log(data)
+  }, [user])
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleCreateNotebook = async () => {
+    if (newNotebookName === '') {
+      alert('Please enter a name')
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+      const returnCode = CreateNotebook(newNotebookName, user)
+      if (returnCode === 0) {
+        void router.push('/notebooks')
+      }
+      setNewNotebookname('')
+    }
   }
 
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (!user) return <div>loading...</div>
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function setMobileMenuOpen (arg0: boolean): void {
+  function setMobileMenuOpen(arg0: boolean): void {
     throw new Error('Function not implemented.')
   }
 
@@ -42,6 +60,7 @@ export default function Profile (): JSX.Element {
           <div className="p-10">
             <h1 className="text-5xl font-bold text-center align-middle ">
               Profile
+              <button onClick={() => { void ReadNotebooks(user) }}>Read Notebooks</button>
             </h1>
             <div className="flex align-middle place-items-center mt-10">
               <img
@@ -56,9 +75,9 @@ export default function Profile (): JSX.Element {
           <p>Footer</p>
         </div>
 
-        <div className="h-screen grid grid-rows-3 place-items-center w-full">
+        <div className="h-screen grid grid-rows-3 place-items-center  w-full">
           <div className="text-6xl font-bold mb-20">Notebooks</div>
-          <div className="flex mb-96 ">
+          <div className="flex mb-96">
             <label className="block mr-2">
               <span className="text-gray-700">Name</span>
               <input
@@ -126,20 +145,50 @@ export default function Profile (): JSX.Element {
                             'block px-4 py-2 text-sm h-full w-full'
                           )}
                           onClick={() => {
-                            console.log('clicked')
+                            void handleCreateNotebook()
                           }}
                         >
                           Create
                         </a>
                       )}
                     </Menu.Item>
+
                   </div>
                 </Menu.Items>
               </Transition>
             </Menu>
+
           </div>
+          <div className="grid  grid-flow-col gap-4 mb-[75vh]">
+
+            {notebooks.map((notebook) => (
+              <div className="bg-white rounded-lg shadow-lg p-5">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-row">
+                    <PencilSquareIcon className="rounded-lg w-8 h-8 mr-2" />
+
+                    <h1 className="text-xl font-bold  ">{notebook.name}</h1>
+                  </div>
+                  {/* <div className="flex flex-row">
+                    <button className="mr-2">
+                      <PencilIcon className="h-5 w-5 text-gray-400" />
+                    </button>
+                    <button>
+                      <TrashIcon className="h-5 w-5 text-gray-400" />
+                    </button>
+            </div> */}
+                </div>
+
+              </div>
+            ))}
+
+          </div>
+
         </div>
-        <div>03</div>
+
+      </div>
+      <div>
+
       </div>
     </>
   )
