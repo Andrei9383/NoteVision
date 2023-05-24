@@ -52,6 +52,8 @@ export default function Profile(): JSX.Element {
     throw new Error('Function not implemented.')
   }
 
+
+
   return (
     <>
       <Header />
@@ -60,7 +62,6 @@ export default function Profile(): JSX.Element {
           <div className="p-10">
             <h1 className="text-5xl font-bold text-center align-middle ">
               Profile
-              <button onClick={() => { void ReadNotebooks(user) }}>Read Notebooks</button>
             </h1>
             <div className="flex align-middle place-items-center mt-10">
               <img
@@ -162,7 +163,7 @@ export default function Profile(): JSX.Element {
           <div className="grid  grid-flow-col gap-4 mb-[75vh]">
 
             {notebooks.map((notebook) => (
-              <div className="bg-white rounded-lg shadow-lg p-5">
+              <div className="bg-white rounded-lg shadow-lg p-5" onClick={() => {router.push({pathname: '/notebook', query: {notebook: JSON.stringify(notebook)}})}}>
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-row">
                     <PencilSquareIcon className="rounded-lg w-8 h-8 mr-2" />
@@ -174,8 +175,7 @@ export default function Profile(): JSX.Element {
                       <PencilIcon className="h-5 w-5 text-gray-400" />
                     </button>
                     <button>
-                      <TrashIcon className="h-5 w-5 text-gray-400" />
-                    </button>
+                      <TrashIcon className="h-5 w-5 text-gray-400" /> </button>
             </div> */}
                 </div>
 

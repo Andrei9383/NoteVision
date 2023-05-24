@@ -21,7 +21,6 @@ async function ReadNotebooks (user) {
   }
   await readData()
 
-  console.log('hello', notebooks)
   return notebooks
 }
 
