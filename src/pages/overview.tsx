@@ -38,7 +38,7 @@ export default function Profile(): JSX.Element {
       // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
       const returnCode = CreateNotebook(newNotebookName, user)
       if (returnCode === 0) {
-        void router.push('/notebooks')
+        void router.push('/notebook')
       }
       setNewNotebookname('')
     }
