@@ -56,6 +56,11 @@ function Notebook (props) {
     updateScene();
   }, [existingElements]);
 
+  const [Excalidraw, setExcalidraw] = useState(null);
+  useEffect(() => {
+    import("@excalidraw/excalidraw").then((comp) => setExcalidraw(comp.Excalidraw));
+  }, []);
+
   const [value, setValue] = useState("");
   const [prompt, setPrompt] = useState("");
   const [completion, setCompletion] = useState("");
@@ -105,7 +110,7 @@ function Notebook (props) {
           </div>
         </div>
       <div className='mr-16 w-full mt-24 rounded-xl border-2 border-[#5f5f5f]'>
-       <Excalidraw onChange={(elements, state) => {
+       {Excalidraw && <Excalidraw onChange={(elements, state) => {
             }}
             ref={(api) => setExcalidrawAPI(api)}>
         <MainMenu>
@@ -116,7 +121,7 @@ function Notebook (props) {
              Save
           </MainMenu.Item>
         </MainMenu>
-        </Excalidraw>
+        </Excalidraw> }
       </div>
     </div>
     <div
