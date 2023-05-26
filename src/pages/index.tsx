@@ -15,7 +15,7 @@ export default function Example (): JSX.Element {
 
   if (user != null) {
     return (
-      <div className='bg-[#e9f0ff] '>
+      <div className='bg-[#e9f0ff]'>
         <Header />
         <div className='relative isolate px-6 pt-14 lg:px-8'>
           <div
@@ -44,8 +44,8 @@ export default function Example (): JSX.Element {
               </div>
             </div>
             <div className='text-center'>
-              <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
-                Take notes the way you *need*.
+              <h1 className='text-4xl font-medium tracking-tight text-gray-900 sm:text-6xl'>
+                Take notes the way you <span className='decoration-double underline font-extrabold'>need</span>.
               </h1>
               <p className='mt-6 text-lg leading-8 text-gray-600'>
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
