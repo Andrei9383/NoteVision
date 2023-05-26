@@ -29,8 +29,7 @@ function Notebook (props) {
   const [existingElements, setExistingElements] = useState(null);
 
   //HAHAHAAHAHHAHAHAHAAHHAHAHHHAHAHAHHA
-  const user_id = localStorage.getItem("last_userd");
-  const notebook_name = localStorage.getItem("last_notebook_name");
+
 
   useHandleLibrary({ excalidrawAPI });
 
@@ -51,8 +50,13 @@ function Notebook (props) {
     excalidrawAPI?.updateScene(sceneData);
   };
 
+  const [user_id, setuserid] = useState();
+  const [notebook_name, setnotebookname] = useState();
+
   useEffect(() => {
     updateScene();
+    setuserid(localStorage.getItem("last_userd"));
+    setnotebookname(localStorage.getItem("last_notebook_name"));
   }, [existingElements]);
   useEffect(async () => {
     const {Excalidraw, useHandleLibrary, MainMenu, restoreElements} = await import ("@excalidraw/excalidraw");
