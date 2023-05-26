@@ -3,14 +3,15 @@
 import Header from '@/components/header/header'
 import { withRouter } from 'next/router'
 import { useUser } from '@/lib/firebase/useUser'
+import { exportToBlob, MainMenu, Excalidraw, useHandleLibrary } from '@excalidraw/excalidraw'
 import React, {useState, useEffect} from 'react'
 import type IUser from '@/interfaces/user'
+import { ExcalidrawImperativeAPI } from '@excalidraw/excalidraw/types/types'
 import UpdateNotebook from "../../components/cloudFirestore/UpdateNotebook"
 import GetNotebook from "../../components/cloudFirestore/GetNotebook"
 import { useRouter } from 'next/router'
+import { restoreElements } from "@excalidraw/excalidraw";
 import { DeviceFloppy } from 'tabler-icons-react'
-import NoSSR from "react-no-ssr"
-
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 
 async function getthing(name, id) {
@@ -29,8 +30,10 @@ function Notebook (props) {
   const [existingElements, setExistingElements] = useState(null);
 
   //HAHAHAAHAHHAHAHAHAAHHAHAHHHAHAHAHHA
+  const user_id = localStorage.getItem("last_userd");
+  const notebook_name = localStorage.getItem("last_notebook_name");
 
-
+  useHandleLibrary({ excalidrawAPI });
 
   getthing(notebook_name, user_id).then((res) => setExistingElements(res.content));
 
@@ -49,18 +52,13 @@ function Notebook (props) {
     excalidrawAPI?.updateScene(sceneData);
   };
 
-  const [user_id, setuserid] = useState();
-  const [notebook_name, setnotebookname] = useState();
-
   useEffect(() => {
     updateScene();
-    setuserid(localStorage.getItem("last_userd"));
-    setnotebookname(localStorage.getItem("last_notebook_name"));
   }, [existingElements]);
-  useEffect(async () => {
-    const {Excalidraw, useHandleLibrary, MainMenu, restoreElements} = await import ("@excalidraw/excalidraw");
-    useHandleLibrary({ excalidrawAPI });
 
+  const [Excalidraw, setExcalidraw] = useState(null);
+  useEffect(() => {
+    import("@excalidraw/excalidraw").then((comp) => setExcalidraw(comp.Excalidraw));
   }, []);
 
   const [value, setValue] = useState("");
@@ -88,7 +86,7 @@ function Notebook (props) {
       }
     }, [value]);
   return (
-    <NoSSR>
+    <>
       <div className="flex flex-row h-full ">
         <div className="h-screen grid grid-rows-3 place-items-center">
           <div className="p-10 mt-[50vh] w-[400px]">
@@ -112,7 +110,7 @@ function Notebook (props) {
           </div>
         </div>
       <div className='mr-16 w-full mt-24 rounded-xl border-2 border-[#5f5f5f]'>
-      {Excalidraw && <Excalidraw onChange={(elements, state) => {
+       {Excalidraw && <Excalidraw onChange={(elements, state) => {
             }}
             ref={(api) => setExcalidrawAPI(api)}>
         <MainMenu>
@@ -123,7 +121,7 @@ function Notebook (props) {
              Save
           </MainMenu.Item>
         </MainMenu>
-        </Excalidraw>}
+        </Excalidraw> }
       </div>
     </div>
     <div
@@ -163,7 +161,7 @@ function Notebook (props) {
             />
           </div>
 
-  </NoSSR>
+  </>
   ) 
 
 }
