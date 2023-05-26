@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/firebase/initFirebase.js", "src/pages/auth.js", "src/pages/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/firebase/initFirebase.js", "src/auth.js", "src/pages/index.jsx", "src/pages/notebook.js"],
   "exclude": ["node_modules"]
 }
