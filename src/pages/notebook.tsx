@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import { restoreElements } from "@excalidraw/excalidraw";
 import { DeviceFloppy } from 'tabler-icons-react'
 import { useHandleLibrary, MainMenu } from '@excalidraw/excalidraw'
+import NoSSR from "react-no-ssr"
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 
@@ -88,7 +89,7 @@ function Notebook (props) {
       }
     }, [value]);
   return (
-    <>
+    <NoSSR>
       <div className="flex flex-row h-full ">
         <div className="h-screen grid grid-rows-3 place-items-center">
           <div className="p-10 mt-[50vh] w-[400px]">
@@ -163,7 +164,7 @@ function Notebook (props) {
             />
           </div>
 
-  </>
+  </NoSSR>
   ) 
 
 }
