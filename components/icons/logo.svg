@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-nodes="true"
+     inkscape:zoom="6.186083"
+     inkscape:cx="243.69217"
+     inkscape:cy="403.89047"
+     inkscape:window-width="1916"
+     inkscape:window-height="1041"
+     inkscape:window-x="0"
+     inkscape:window-y="18"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient65823">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop65819" />
+      <stop
+         style="stop-color:#688cf8;stop-opacity:1"
+         offset="1"
+         id="stop65821" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient24994-5">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop24990" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop24992" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient24994-5"
+       id="linearGradient33569"
+       gradientUnits="userSpaceOnUse"
+       x1="65.003512"
+       y1="102.84078"
+       x2="82.783494"
+       y2="102.84078" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient65823"
+       id="linearGradient65825"
+       x1="75.670868"
+       y1="102.82243"
+       x2="81.170372"
+       y2="102.87714"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0015075,0,0,1.0015076,-3.7266639,-0.21394351)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:12.7px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;fill:url(#linearGradient33569);fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+       x="64.520912"
+       y="107.37468"
+       id="text1881"><tspan
+         sodipodi:role="line"
+         id="tspan1879"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+         x="64.520912"
+         y="107.37468">N</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7191px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';letter-spacing:0px;fill:url(#linearGradient65825);fill-opacity:1;stroke-width:0.264982"
+       x="70.770386"
+       y="107.23001"
+       id="text63853"
+       transform="scale(0.99849472,1.0015075)"><tspan
+         sodipodi:role="line"
+         id="tspan63851"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7191px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif';fill:url(#linearGradient65825);fill-opacity:1;stroke-width:0.264982"
+         x="70.770386"
+         y="107.23001">V</tspan></text>
+  </g>
+</svg>

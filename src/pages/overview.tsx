@@ -58,28 +58,24 @@ export default function Profile(): JSX.Element {
 
   return (
     <>
-      <Header />
       <div className="flex flex-row h-full">
-        <div className="h-screen grid grid-rows-3 place-items-center border-gray-400 border-r drop-shadow-md shadow-gray shadow-2xl">
-          <div className="p-10">
-            <h1 className="text-5xl font-bold text-center align-middle ">
-              Profile
-            </h1>
-            <div className="flex align-middle place-items-center mt-10">
+        <div className="bg-[#ffffff50]  grid grid-rows-3 place-items-center border-gray-400 border-2  mt-24 rounded-r-xl drop-shadow-lg shadow-grey shadow-2xl">
+          <div className="px-10 py-0">
+            <div className="text-5xl text-center flex align-middle place-items-center -mt-24">
               <img
                 src={user.profilePic}
-                className="rounded-full w-8 h-8 mr-2"
+                className="rounded-full w-12 h-12 mr-2"
               />
-              <h1 className="text-2xl font-bold  ">{user.name}</h1>
+              <h1 className="text-3xl font-bold  ">{user.name}</h1>
             </div>
           </div>
 
-          <p className="text-sm text-gray-500">Content.</p>
+          <p className="text-sm text-gray-500">{notebooks.length} notebooks</p>
           <p>Footer</p>
         </div>
 
         <div className="h-screen grid grid-rows-3 place-items-center  w-full">
-          <div className="text-6xl font-bold mb-20">Notebooks</div>
+          <div className="text-6xl font-bold mb-20 mt-12">Notebooks</div>
           <div className="flex mb-96">
             <label className="block mr-2">
               <span className="text-gray-700">Name</span>
@@ -165,17 +161,21 @@ export default function Profile(): JSX.Element {
               <div
                 className="bg-white rounded-lg shadow-lg p-5"
                 onClick={() => {
+                  localStorage.setItem("last_notebook_name", notebook.name);
+                  localStorage.setItem("last_userd", user.id);
                   router.push({
                     pathname: "/notebook",
-                    query: { notebook: JSON.stringify(notebook) },
                   });
+                  console.warn("NOTEBOOK FROM OW: ", notebook);
                 }}
               >
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-row">
                     <PencilSquareIcon className="rounded-lg w-8 h-8 mr-2" />
-
-                    <h1 className="text-xl font-bold  ">{notebook.name}</h1>
+                    <div className="inline-block">
+                    <h1 className="text-xl font-bold inline-block">{notebook.name}</h1> ‎<br />‎
+                    <div className="text-lg inline-block">{new Date(notebook.created.seconds * 1000).toLocaleDateString("ro-RO")}</div>
+                    </div>
                   </div>
                   {/* <div className="flex flex-row">
                     <button className="mr-2">

@@ -4,7 +4,7 @@ import React from 'react'
 export default function Document (): JSX.Element {
   return (
     <Html lang="en">
-      <Head />
+      <Head><title>NoteVision</title></Head>
       <body>
         <Main />
         <NextScript />

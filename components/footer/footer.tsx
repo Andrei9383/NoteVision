@@ -10,26 +10,22 @@ export default function Footer(): JSX.Element {
     void router.push("/contact");
   }
   return (
-    <footer className="bg-gray-700 inset-x-0 bottom-0 ">
-      <div className="w-full h-[5%] flex py-4 px-4 overflow-hidden sm:px-6 lg:px-8]">
-        <p className="my-2 grow text-center text-base text-gray-400">
-          &copy; 2023 NoteVision, Inc. All rights reserved.
-        </p>
-        <span className="place-self-end">
-          <button
-            onClick={handleAbout}
-            className="text-gray-400 hover:text-gray-200 mx-2"
-          >
-            About
-          </button>
-          <button
-            onClick={handleContact}
-            className="text-gray-400 hover:text-gray-200 mx-2"
-          >
-            Contact
-          </button>
-        </span>
-      </div>
-    </footer>
+    <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800 bottom-0 w-[96%] ml-[2%]">
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://notevision.ro/" class="hover:underline">NoteVision™</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="/about" class="mr-4 hover:underline md:mr-6">About</a>
+        </li>
+        <li>
+            <a href="https://www.github.com/Andrei9383/NoteVision" class="mr-4 hover:underline md:mr-6">GitHub</a>
+        </li>
+        <li>
+            <a href="/contact" class="hover:underline">Contact</a>
+        </li>
+    </ul>
+    </div>
+</footer>
   );
 }
