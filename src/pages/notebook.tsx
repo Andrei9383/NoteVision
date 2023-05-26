@@ -5,13 +5,10 @@ import { withRouter } from 'next/router'
 import { useUser } from '@/lib/firebase/useUser'
 import React, {useState, useEffect} from 'react'
 import type IUser from '@/interfaces/user'
-import { ExcalidrawImperativeAPI } from '@excalidraw/excalidraw/types/types'
 import UpdateNotebook from "../../components/cloudFirestore/UpdateNotebook"
 import GetNotebook from "../../components/cloudFirestore/GetNotebook"
 import { useRouter } from 'next/router'
-import { restoreElements } from "@excalidraw/excalidraw";
 import { DeviceFloppy } from 'tabler-icons-react'
-import { useHandleLibrary, MainMenu } from '@excalidraw/excalidraw'
 import NoSSR from "react-no-ssr"
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -57,10 +54,8 @@ function Notebook (props) {
   useEffect(() => {
     updateScene();
   }, [existingElements]);
-  const [Excalidraw, setExcalidraw] = useState(null);
   useEffect(() => {
-    
-    import("@excalidraw/excalidraw").then((comp) => setExcalidraw(comp.Excalidraw));
+    const {Excalidraw, useHandleLibrary, MainMenu, restoreElements} = await import ("@excalidraw/excalidraw");
     
   }, []);
 
