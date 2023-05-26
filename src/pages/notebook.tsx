@@ -54,7 +54,7 @@ function Notebook (props) {
   useEffect(() => {
     updateScene();
   }, [existingElements]);
-  useEffect(() => {
+  useEffect(async () => {
     const {Excalidraw, useHandleLibrary, MainMenu, restoreElements} = await import ("@excalidraw/excalidraw");
     
   }, []);
