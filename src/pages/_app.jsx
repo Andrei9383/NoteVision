@@ -5,14 +5,13 @@ import React from "react";
 import { Space_Grotesk } from "@next/font/google";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-
-import type { AppProps } from "next/app";
+import NoSSR from "react-no-ssr"
 
 const sans = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+export default function App({ Component, pageProps }) {
   return (
     <>
       <Header />
@@ -23,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           }
         `}
       </style>
+      <NoSSR>
       <Component {...pageProps} />
+      </NoSSR>
       <div>
         <Footer />
       </div>
