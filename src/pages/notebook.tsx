@@ -3,7 +3,6 @@
 import Header from '@/components/header/header'
 import { withRouter } from 'next/router'
 import { useUser } from '@/lib/firebase/useUser'
-import { exportToBlob, MainMenu, Excalidraw, useHandleLibrary } from '@excalidraw/excalidraw'
 import React, {useState, useEffect} from 'react'
 import type IUser from '@/interfaces/user'
 import { ExcalidrawImperativeAPI } from '@excalidraw/excalidraw/types/types'
@@ -12,6 +11,8 @@ import GetNotebook from "../../components/cloudFirestore/GetNotebook"
 import { useRouter } from 'next/router'
 import { restoreElements } from "@excalidraw/excalidraw";
 import { DeviceFloppy } from 'tabler-icons-react'
+import { useHandleLibrary, MainMenu } from '@excalidraw/excalidraw'
+
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 
 async function getthing(name, id) {
@@ -55,10 +56,11 @@ function Notebook (props) {
   useEffect(() => {
     updateScene();
   }, [existingElements]);
-
   const [Excalidraw, setExcalidraw] = useState(null);
   useEffect(() => {
+    
     import("@excalidraw/excalidraw").then((comp) => setExcalidraw(comp.Excalidraw));
+    
   }, []);
 
   const [value, setValue] = useState("");
@@ -110,7 +112,7 @@ function Notebook (props) {
           </div>
         </div>
       <div className='mr-16 w-full mt-24 rounded-xl border-2 border-[#5f5f5f]'>
-       {Excalidraw && <Excalidraw onChange={(elements, state) => {
+      {Excalidraw && <Excalidraw onChange={(elements, state) => {
             }}
             ref={(api) => setExcalidrawAPI(api)}>
         <MainMenu>
@@ -121,7 +123,7 @@ function Notebook (props) {
              Save
           </MainMenu.Item>
         </MainMenu>
-        </Excalidraw> }
+        </Excalidraw>}
       </div>
     </div>
     <div

@@ -72,7 +72,7 @@ export default function Profile(): JSX.Element {
           </div>
 
           <p className="text-sm text-gray-500">{notebooks.length} notebooks</p>
-          <p>Footer</p>
+          
         </div>
 
         <div className="h-screen grid grid-rows-3 place-items-center  w-full">
