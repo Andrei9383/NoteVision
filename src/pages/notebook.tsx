@@ -31,7 +31,6 @@ function Notebook (props) {
   //HAHAHAAHAHHAHAHAHAAHHAHAHHHAHAHAHHA
 
 
-  useHandleLibrary({ excalidrawAPI });
 
   getthing(notebook_name, user_id).then((res) => setExistingElements(res.content));
 
@@ -60,7 +59,8 @@ function Notebook (props) {
   }, [existingElements]);
   useEffect(async () => {
     const {Excalidraw, useHandleLibrary, MainMenu, restoreElements} = await import ("@excalidraw/excalidraw");
-    
+    useHandleLibrary({ excalidrawAPI });
+
   }, []);
 
   const [value, setValue] = useState("");
