@@ -1,15 +1,43 @@
-import React, { Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 
 import { Menu, Transition } from '@headlessui/react'
-
 import Image from 'next/image'
+
+import { useRouter } from 'next/router'
 
 function classNames (...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Dropdown (props: any): JSX.Element {
+  const [LoggedIn, setLoggedIn] = useState(false)
+  useEffect(() => {
+    if (props.user != null) {
+      setLoggedIn(true)
+    }
+    if (props.user == null) setLoggedIn(false)
+  }, [props.user])
+  const router = useRouter()
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleRoute = (e: any) => {
+    e.preventDefault()
+    void router.push('/auth')
+  }
   return (
+    <div>
+       {!LoggedIn
+         // eslint-disable-next-line multiline-ternary
+         ? (
+       <div>
+        <Menu as="div" className="relative inline-block text-left">
+          <div onClick={handleRoute}>
+            <div className="inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-[#ffffff50] px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+              <a href="/auth" onClick={handleRoute}>Log In</a>
+              </div>
+          </div>
+        </Menu>
+      </div>
+           ) : (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-[#ffffff50] px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -126,7 +154,7 @@ export default function Dropdown (props: any): JSX.Element {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="/"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
@@ -140,6 +168,7 @@ export default function Dropdown (props: any): JSX.Element {
           </div>
         </Menu.Items>
       </Transition>
-    </Menu>
-  )
+    </Menu>)
+       }
+     </div>)
 }
