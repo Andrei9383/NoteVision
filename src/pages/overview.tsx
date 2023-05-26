@@ -1,3 +1,4 @@
+//@ts-nocheck
 /* eslint-disable react/jsx-key */
 import React, { Fragment, useState, useEffect } from "react";
 

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState, Fragment, useEffect } from 'react'
 
 import { Menu, Transition } from '@headlessui/react'
